@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Health))]
 public class Attacker : MonoBehaviour
 {
     float currentSpeed = 3f;

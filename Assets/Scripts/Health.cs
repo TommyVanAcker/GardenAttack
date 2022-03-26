@@ -5,15 +5,25 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] float healtPts = 30f;
-    // Start is called before the first frame update
-   
+    [SerializeField] GameObject deathVfx;
+    
 
     public void DealDamage(float damagePts)
     {
         healtPts -= damagePts;
         if(healtPts <= 0)
         {
+            TriggerDeathVfx();
             Destroy(gameObject);
+
         }
+    }
+
+    private void TriggerDeathVfx()
+    {
+        if (!deathVfx) { return; }
+        GameObject vfx = GameObject.Instantiate<GameObject>(deathVfx, gameObject.transform.position, Quaternion.identity);
+        Destroy(vfx,3f);
+        
     }
 }
