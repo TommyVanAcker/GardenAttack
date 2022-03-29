@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class SpawnDefender : MonoBehaviour
 {
-    [SerializeField] Defender defender;
+    Defender defender;
     private void OnMouseDown()
     {
         CreateDefender(GetSquareClicked());
         
+    }
+    public void SetSelectedDefender(Defender defenderToSelect)
+    {
+        defender = defenderToSelect;
     }
 
 
@@ -22,7 +26,13 @@ public class SpawnDefender : MonoBehaviour
 
     void CreateDefender(Vector2 gamePos)
     {
-        Defender newDefender = Instantiate(defender, gamePos, transform.rotation);
+        if (!defender) { return; }
+        int starCost = defender.GetStarCost();
+        if (FindObjectOfType<StarDisplay>().SpendStars(starCost))
+        {
+            Defender newDefender = Instantiate(defender, gamePos, transform.rotation);
+        }
+        
 
     }
 }

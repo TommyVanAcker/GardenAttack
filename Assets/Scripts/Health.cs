@@ -6,7 +6,12 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float healtPts = 30f;
     [SerializeField] GameObject deathVfx;
+
     
+    private void Start()
+    {
+        
+    }
 
     public void DealDamage(float damagePts)
     {

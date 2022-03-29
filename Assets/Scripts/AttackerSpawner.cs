@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class AttackerSpawner : MonoBehaviour
 {
-    [SerializeField] List<Attacker> attacker = new List<Attacker>();
-    [Range(0.5f,3f)][SerializeField] float minSpawnDelay = 1f;
-    [Range(1f,5f)][SerializeField] float maxSpawnDelay = 5f;
+    [SerializeField] List<Attacker> attackers = new List<Attacker>();
+    [Range(0.5f,10f)][SerializeField] float minSpawnDelay = 1f;
+    [Range(10f,20f)][SerializeField] float maxSpawnDelay = 5f;
     
     bool spawn = true;
+    
     
 
     // Start is called before the first frame update
@@ -24,8 +25,21 @@ public class AttackerSpawner : MonoBehaviour
 
     void SpawnAttacker()
     {
-        GameObject.Instantiate(attacker[Random.Range(0, attacker.Count)], transform.position, Quaternion.identity, transform);
+        Attacker attacker =  GameObject.Instantiate(attackers[Random.Range(0, attackers.Count)], transform.position, Quaternion.identity, transform);
+        
     }
 
+  
    
+    public bool IsAttackerInMyLane()
+    {
+        if (transform.childCount > 0)
+        {
+            return true;
+        }
+        else { return false; }
+
+
+
+    }
 }

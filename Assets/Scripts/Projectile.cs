@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
 
     private void Shoot()
     {
-        transform.Translate(Vector2.right * Time.deltaTime * speed);
+        transform.Translate(Vector2.right * Time.deltaTime * speed, Space.World);
         //transform.RotateAround(transform.position, Vector3.back, projectiledegree * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
